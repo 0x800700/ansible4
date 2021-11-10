@@ -1,0 +1,24 @@
+---
+#- name: update Centos packages
+#  yum:
+#    name=* state=latest
+
+
+- name: Install nginx packages
+  block:
+    - name: Install epel-release
+      yum:
+        name: epel-release
+        state: present
+
+    - name: install nginx server
+      yum:
+        name: nginx
+        state: present
+        update_cache: yes
+
+
+- name: install tree
+  yum:
+    name: tree
+    state: present

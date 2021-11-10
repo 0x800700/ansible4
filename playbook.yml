@@ -1,0 +1,8 @@
+---
+- hosts: prod
+  roles:
+    - nginx
+
+- hosts: prod
+  roles:
+    - create_user

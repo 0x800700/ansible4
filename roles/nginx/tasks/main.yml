@@ -1,0 +1,12 @@
+---
+- name: 'INSTALL | install nginx'
+  import_tasks: "install.yml"
+  tags: ['nginx', 'nginx::install']
+
+- name: 'UPDATE | update Centos packages'
+  import_tasks: "install.yml"
+  tags: ['update']
+
+- name: 'config'
+  import_tasks: "config.yml"
+  tags: ['nginx', 'nginx::config']

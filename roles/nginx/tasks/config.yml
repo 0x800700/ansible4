@@ -1,0 +1,32 @@
+---
+
+- name: update nginx statics
+  copy:
+    src: "files/"
+    dest: "{{ nginx_root_dir }}"
+    owner: root
+  notify:
+    - reload nginx
+
+
+- firewalld:
+      service: https
+      permanent: yes
+      state: enabled
+
+  notify:
+    - restart firewalld
+
+
+- firewalld:
+    zone: public
+    service: http
+    permanent: yes
+    state: enabled
+  notify:
+    - restart firewalld
+
+#- name: Bounce firewalld
+#  service:
+#    name: firewalld
+#    state: restarted
